@@ -1,6 +1,6 @@
 # Arch-i3-gaps-arc-theme-dotfiles
 Install instructions/configuration files for Archlinux with i3gaps themed to match arc-dark gtk
-
+```
 Follow the guide here to install:
         https://wiki.archlinux.org/index.php/Installation_guide
         https://wiki.archlinux.org/index.php/Beginners'_guide
@@ -285,3 +285,4 @@ Then move all of the following files from this repo into their respective direct
 ~/.bash_profile
 ~/.config/screen-lock.png
 ~/Pictures/wallpaper.png
+```
