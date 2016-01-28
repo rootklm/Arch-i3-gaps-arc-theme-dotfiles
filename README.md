@@ -162,7 +162,9 @@ install screenfetch (# pacman -S screenfetch)
 
 install nmon (# pacman -S nmon)
 
+Install apulse ($ yaourt -S apulse) -> cp /usr/share/apulse/asoundrc.sample ~/.asoundrc
 install mumble/skype/irssi (# pacman -S skype mumble irssi) (need to un-comment [multilib] in /etc/pacman.conf for skype to install)
+Replace exec line in /usr/share/applications/skype.desktop with Exec=/usr/bin/apulse32 /usr/bin/skype  %U
 
 install ncmpcpp (# pacman -S ncmpcpp mpd mpc (https://wiki.archlinux.org/index.php/ncmpcpp)) configure with ~/.ncmpcpp/config (sample in /usr/share/doc/ncmpcpp/config)
 											 configure mpd with /etc/mpd.conf (sample in /usr/share/doc/mpd/mpdconf.example)
