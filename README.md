@@ -285,4 +285,8 @@ Then move all of the following files from this repo into their respective direct
 ~/.bash_profile
 ~/.config/screen-lock.png
 ~/Pictures/wallpaper.png
+
+Also:
+*.sh from ~/.config/i3/startScripts
+*.json from ~/.config/i3/ (maybe make a new directory at ~/.config/i3/workspaceLayouts and change the references in ~/.config/i3/config)
 ```
