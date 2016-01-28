@@ -1,5 +1,8 @@
 # Arch-i3-gaps-arc-theme-dotfiles
 Install instructions/configuration files for Archlinux with i3gaps themed to match arc-dark gtk
+![Alt text](http://i.imgur.com/3fdoEcM.png "Workspace 1")
+![Alt text](http://i.imgur.com/waou1u7.png "Workspace 2")
+![Alt text](http://i.imgur.com/CySKsv3.png "Workspace 3")
 ```
 Follow the guide here to install:
         https://wiki.archlinux.org/index.php/Installation_guide
