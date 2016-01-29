@@ -266,7 +266,50 @@ Installing Unreal Engine 4.0 editor: (https://wiki.unrealengine.com/Building_On_
 		$ ./GenerateProjectFiles.sh -project="/home/user/Documents/Unreal\ Projects/MyProject/MyProject.uproject" -game -engine
 	Opening project files:
 		$ ./UE4Editor "/home/user/Documents/Unreal\ Projects/MyProject/MyProject.uproject"
-		
+
+Install osu:
+	$ sudo usermod -a -G audio rklm
+	$ sudo usermod -a -G video rklm
+	$ mkdir ~/Backups
+	$ cp /etc/security/limits.conf ~/Backups
+	$ sudo echo -e '@audio - rtprio 99\n@audio - memlock 8000000\n@audio - nice -19' >> /etc/security/limits.conf
+	$ sudo echo -e 'options usbhid mousepoll=1' >> /etc/modprobe.d/modprobe.conf
+	$ echo -e '#!/bin/bash\n#wait for the desktop to settle\nsleep 10\n# turn off mouse acceleration\nxset m 0 0' >> ~/bin/nomouseacc.sh
+	$ sudo chmod +x ~/bin/nomouseacc.sh
+	$ sudo pacman -Syu wine-staging
+	$ sudo pacman -S winetricks
+	$ ALSA_DEFAULT_PCM="plug:dmixer" WINEPREFIX=~/.wine WINEARCH=win32 winecfg
+	<prompts, prompts, prompts prompts accept all of them>
+	$ ALSA_DEFAULT_PCM="plug:dmixer" WINEPREFIX=~/.wine WINEARCH=win32 winetricks -q dotnet45 corefonts gdiplus cjkfonts
+	$ ALSA_DEFAULT_PCM="plug:dmixer" WINEPREFIX=~/.wine WINEARCH=win32 winecfg
+	<libraries tab, edit gdiplus -> "built in then native"
+	$ cd Downloads
+	$ wget 'https://m1.ppy.sh/release/osu!install.exe' --no-check-certificate
+	$ ALSA_DEFAULT_PCM="plug:dmixer" WINEPREFIX=~/.wine WINEARCH=win32 wine 'osu!install.exe'
+	$ echo -e '#!/bin/bash\nExec=env ALSA_DEFAULT_PCM="plug:dmixer" env WINEPREFIX=/home/rklm/.wine env WINEARCH=win32 wine "/home/rklm/.wine/drive_c/Program Files/osu!/osu!.exe"' >> ~/bin/osu.sh
+	$ sudo chmod +x /home/rklm/bin/osu.sh
+	Then recompile winealsa to reduce audio lag:
+	$ cd Downloads (if you aren't already there)
+	$ wget http://ftp.winehq.org/pub/wine/source/1.9/wine-1.9.2.tar.bz2
+	$ tar -xvf wine-1.9.2.tar.bz2		
+	$ cd wine-1.9.2
+	$ vim dlls/winealsa.drv/mmdevdrv.c
+		replace these lines:
+			static const REFERENCE_TIME DefaultPeriod = 10000;
+			static const REFERENCE_TIME MinimumPeriod = 10000;
+			#define                     EXTRA_SAFE_RT   5000
+	$ sudo pacman -S multilib-devel
+	$ ./configure --without-x --without-freetype
+	$ make dlls/winealsa.drv
+	$ cp /usr/lib/wine/winealsa.drv.so ~/Backups
+	$ cp /usr/lib64/wine/winealsa.drv.so ~/Backups/winealsa.drv.so_64
+	$ cp /usr/lib/wine/fakedlls/winealsa.drv ~/Backups/winealsa.drv.fake
+	$ cp /usr/lib64/wine/fakedlls/winealsa.drv ~/Backups/winealsa.drv.fake_64
+	$ sudo cp dlls/winealsa.drv/winealsa.drv.so /usr/lib/wine/winealsa.drv.so
+    	$ sudo cp dlls/winealsa.drv/winealsa.drv.so /usr/lib64/wine/winealsa.drv.so
+    	$ sudo cp dlls/winealsa.drv/winealsa.drv.fake /usr/lib/wine/fakedlls/winealsa.drv
+    	$ sudo cp dlls/winealsa.drv/winealsa.drv.fake /usr/lib64/wine/fakedlls/winealsa.drv
+
 Once all the stuff from above that you care about is done, make the following directories (if they don't already exist):
 
 ~/Desktop
