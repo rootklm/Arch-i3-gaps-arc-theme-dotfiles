@@ -260,8 +260,11 @@ Installing Unreal Engine 4.0 editor: (https://wiki.unrealengine.com/Building_On_
 		or
 		$ make UE4Editor-Linux-Debug UE4Game UnrealPak CrashReportClient ShaderCompileWorker UnrealLightmass
 		$ make -j1 ShaderCompileWorker
-	Run executable:
-		$ cd Engine/Binaries/Linux && ./UE4Editor
+	Create/Run executable:
+		$ mkdir ~/Software (if it doesn't exist
+		$ mv ~/Downloads/UnrealEngine/ ~/Software/UnrealEngine
+		$ echo -e '#!/bin/bash\nExec=cd ~/Software/UnrealEngine/Engine/Binaries/Linux && ./UE4Editor-Linux-Debug' >> ~/bin/UnrealEngine.sh
+		$ chmod +x UnrealEngine.sh
 	Generate project files:
 		$ ./GenerateProjectFiles.sh -project="/home/user/Documents/Unreal\ Projects/MyProject/MyProject.uproject" -game -engine
 	Opening project files:
