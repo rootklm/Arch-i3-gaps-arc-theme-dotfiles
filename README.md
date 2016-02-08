@@ -34,12 +34,12 @@ https://wiki.archlinux.org/index.php/Console_mouse_support
 https://wiki.archlinux.org/index.php/Scrollback_buffer
 https://wiki.archlinux.org/index.php/File_systems
 ```
+
+#Install:
 ```
 # root (priority: sudo > su)
 $ user
 ```
-
-#Install:
 ```
 Boot thumb drive in UEFI mode
 ```
@@ -229,7 +229,7 @@ $ cp /media/usb/Backup/xinitrc /etc/X11/xinit/
 
 #Install Standard software:
 ```
-# pacman -S firefox gtk3 lxappearance gedit emacs rxvt-unicode transmission-cli arandr feh ranger htop nmon screenfetch 
+# pacman -S firefox gtk3 lxappearance gedit emacs rxvt-unicode transmission-cli arandr feh ranger htop nmon screenfetch xorg-xrdb
 $ yaourt -S ttf-google-fonts-git ttf-font-awesome gtk-theme-arc-git rofi-git i3blocks compton apulse 
 ```
 
@@ -239,6 +239,7 @@ run lxappearance, and choose the arc gtk theme, and choose droid sans font.
 Go to this address in firefox and install the arc firefox theme: https://github.com/horst3180/arc-firefox-theme/releases
 Make a macro that runs transmission cli in the terminal using this syntax: "transmission-cli -D -ep -w '/home/rklm/Downloads/' <magnet link>"
 move wallpaper.jpg to ~/Pictures
+xrdb ~/.Xresources
 $ cp /usr/share/apulse/asoundrc.sample ~/.asoundrc
 $ cp /media/usb/Backup/lock.sh ~/bin
 $ cp /media/usb/Backup/lock.png ~/.config/i3/
