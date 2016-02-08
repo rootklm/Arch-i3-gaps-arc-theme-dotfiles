@@ -229,8 +229,8 @@ $ cp /media/usb/Backup/xinitrc /etc/X11/xinit/
 
 #Install Standard software:
 ```
-# pacman -S firefox gtk3 lxappearance gedit emacs rxvt-unicode transmission-cli arandr feh ranger htop nmon screenfetch xorg-xrdb
-$ yaourt -S ttf-google-fonts-git ttf-font-awesome gtk-theme-arc-git rofi-git i3blocks compton apulse 
+# pacman -S firefox gtk3 lxappearance gedit emacs rxvt-unicode transmission-cli arandr feh ranger htop nmon screenfetch xorg-xrdb scrot imagemagick dbus
+$ yaourt -S ttf-google-fonts-git ttf-font-awesome gtk-theme-arc-git rofi-git i3blocks i3lock-git compton apulse 
 ```
 
 #Configure software:
