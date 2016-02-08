@@ -32,13 +32,16 @@ What the guide will probably tell you to do (command by command)
                 mkdir /mnt/boot
                 mkfs.fat -F32 /dev/<whatever shows up as the 512m partition> (probably /dev/sda1)
                 mount /dev/<the one you just made fat32> /mnt/boot (/dev/sda1 probably)
+                mkdir /media
+                mkdir /media/usb
+                chmod -r 777 /media/usb
         Force packagemanager to use the best mirrors
                 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
                 sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.backup
                 rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
+                (Or rm /etc/pacman.d/mirror list && copy mirror list from external drive)
         Install the base packages into your filesystem
-                pacstrap /mnt base
-                pacstrap /mnt base
+                pacstrap /mnt base base-devel 
         Configure those packages
                 genfstab -p /mnt >> /mnt/etc/fstab
                 arch-chroot /mnt
