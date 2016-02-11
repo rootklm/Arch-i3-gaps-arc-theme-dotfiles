@@ -80,7 +80,7 @@ ctrl+c (stop ping)
 ```
 # mkdir /media
 # mkdir /media/usb
-# chmod -r 777 /media/usb
+# chmod -R 777 /media/usb
 # mount /dev/sdc1 /media/usb (or whatever deive shows up in lsblk as your backup/dotfiles drive, ie: the drive that isnt 512 MiB or the size as the rest of your storage)
 # rm /etc/pacman.d/mirrorlist
 # cp /media/usb/Backup/mirrorlist /etc/pacman.d/
@@ -118,6 +118,21 @@ $ LANG= source /etc/profile.d/locale.sh (optional, just applies the update right
 # reboot
 ```
 
+#Reconnect to the internet:
+```
+# wifi-menu (follow the prompts again)
+```
+
+#Set up user:
+```
+# useradd -m -G wheel -s /bin/bash <Username>
+# passwd <Username> (follow prompts)
+# vim /etc/sudoers
+add the following line under "root ALL=(ALL) ALL":
+     "rklm ALL=(ALL) ALL"
+save the file with :w! or :x!
+```
+
 #Make some folders in your home directory:
 ```
 $ mkdir ~/Desktop
@@ -127,17 +142,14 @@ $ mkdir ~/Music
 $ mkdir ~/Pictures
 $ mkdir ~/Software
 $ mkdir ~/bin
-```
-
-#Reconnect to the internet:
-```
-# wifi-menu (follow the prompts again)
+# chmod -R 777 /home/rklm/*
 ```
 
 #Update package manager:
 ```
 # pacman -Syy
 # pacman -Syu
+# pacman-key --refresh-keys
 ```
 
 #Install yaourt (for aur):
@@ -154,17 +166,7 @@ $ makepkg -si
 
 #Install vim (to make the steps that require config file edits easier):
 ```
-# pacman -S vim
-```
-
-#Set up user:
-```
-# useradd -m -G wheel -s /bin/bash <Username>
-# passwd <Username> (follow prompts)
-# vim /etc/sudoers
-add the following line under "root ALL=(ALL) ALL":
-     "rklm ALL=(ALL) ALL"
-save the file with :w! or :x!
+# pacman -S vim git
 ```
 
 #Configure video drivers/server:
@@ -204,7 +206,7 @@ $ cp /media/usb/Backup/pacman.conf /etc/
 
 #Install i3:
 ```
-$ yaourt -S i3-gaps-git
+$ yaourt -S i3-gaps-git rxvt-unicode dmenu i3lock i3status perl-json-xs perl-anyevent-i3
 ```
 
 ##Configure it to start at login:
@@ -232,7 +234,26 @@ $ cp /media/usb/Backup/xinitrc /etc/X11/xinit/
 #Install Standard software:
 ```
 # pacman -S firefox gtk3 lxappearance gedit emacs rxvt-unicode transmission-cli arandr feh ranger htop nmon screenfetch xorg-xrdb scrot imagemagick dbus xorg-xbacklight
-$ yaourt -S ttf-google-fonts-git ttf-font-awesome gtk-theme-arc-git rofi-git i3blocks i3lock-git compton apulse 
+$ yaourt -S ttf-google-fonts-git ttf-font-awesome gtk-theme-arc-git rofi-git i3blocks compton apulse 
+```
+
+#Move your dotfiles over:
+```
+/etc/X11/xinit/xinitrc (if you didn't already make it perfect)
+/etc/sudoers (if you didn't already make it perfect)
+/etc/pacman.conf (if you didn't already make it perfect)
+~/.config/i3/config
+~/.Xresources
+~/.config/i3/i3blocks.conf
+~/.config/compton.conf
+~/.config/ranger/ (if it doesn't already exist, which it probably does)
+~/.ncmpcpp/config
+/etc/mpd.conf
+~/.bash_profile
+~/.config/screen-lock.png
+~/Pictures/wallpaper.png
+*.sh from ~/.config/i3/startScripts
+*.json from ~/.config/i3/ (maybe make a new directory at ~/.config/i3/workspaceLayouts and change the references in ~/.config/i3/config)
 ```
 
 #Configure software:
@@ -366,25 +387,6 @@ $ mpc update
 ####start ncmpcpp and press:
 ```
 u
-```
-
-#Move your dotfiles over:
-```
-/etc/X11/xinit/xinitrc (if you didn't already make it perfect)
-/etc/sudoers (if you didn't already make it perfect)
-/etc/pacman.conf (if you didn't already make it perfect)
-~/.config/i3/config
-~/.Xresources
-~/.config/i3/i3blocks.conf
-~/.config/compton.conf
-~/.config/ranger/ (if it doesn't already exist, which it probably does)
-~/.ncmpcpp/config
-/etc/mpd.conf
-~/.bash_profile
-~/.config/screen-lock.png
-~/Pictures/wallpaper.png
-*.sh from ~/.config/i3/startScripts
-*.json from ~/.config/i3/ (maybe make a new directory at ~/.config/i3/workspaceLayouts and change the references in ~/.config/i3/config)
 ```
 
 #Install unreal engine: 
