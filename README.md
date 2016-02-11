@@ -104,8 +104,10 @@ ctrl+c (stop ping)
 # arch-chroot /mnt
 # echo <Name your computer here> > /etc/hostname
 # ln -s /usr/share/zoneinfo/Chozen/Time_Zone > /etc/localtime (ls /usr/share/zoneinfo and ls/usr/share/zoneinfo/<your country> to figure out what is available)
+# echo en_US.UTF-8 UTF-8
 # locale-gen
-# echo $LANG=en_US.UTF-8 > /etc/locale.conf
+# localectl set-locale LANG=en_US.UTF-8
+$ LANG= source /etc/profile.d/locale.sh (optional, just applies the update right now)
 # mkinitcpio -p linux
 # passwd (follow prompts)
 # pacman -S iw wpa_supplicant dialog grub efibootmgr
@@ -530,4 +532,46 @@ $ alsamixer
 ##Test:
 ```
 $ speaker-test -c 2
+```
+
+#Things to work on:
+
+##Bar
+###Install and configure lemonbar
+###Install and configure powerline to integrate with lemonbar
+###Install and configure powerline to integrate with URvt
+###Install and configure powerline to integrate with vim
+###Install and configure conky to integrate with powerline in lemonbar
+###Configure mpd to integrate with powerline in lemonbar
+###Configure xprop to integrate with powerline in lemonbar
+###Install and configure vim plugins to integrate with powerline in vim
+###Install and configure stalonetray to integrate with powerline in lemonbar
+###Install and configure menutray to integrate with stalonetray in powerline in lemonbar
+###Sources to do this:
+```
+https://github.com/electro7/dotfiles/tree/master/.i3/lemonbar
+https://github.com/CopperBadger/dotfiles
+https://i3wm.org/docs/wsbar.html
+https://wiki.archlinux.org/index.php/Lemonbar
+https://powerline.readthedocs.org/en/latest/usage/wm-widgets.html#lemonbar-formerly-bar-aint-recursive
+https://github.com/LemonBoy/bar
+http://misctechmusings.com/powerline-on-archlinux/
+http://powerline.readthedocs.org/en/master/tips-and-tricks.html
+https://wiki.archlinux.org/index.php/conky
+https://wiki.archlinux.org/index.php/Stalonetray
+https://github.com/trizen/menutray/blob/master/INSTALL.md
+https://aur.archlinux.org/packages/menutray/
+
+```
+
+##Chroot
+###Install and configure arch32-light
+###Install and configure base, base-devel, nvidia, skype, steam, and other 32bit packages in arch32
+###Install and configure i3 to run in arch32, and change configuration files so that it chroots into arch32 and starts X11 and i3 when logged into TTY2 (for a seemless side-by-side 64 and 32 bit build)
+###Sources to do this:
+```
+https://wiki.archlinux.org/index.php/Install_bundled_32-bit_system_in_64-bit_system
+http://xyne.archlinux.ca/projects/arch32-light/
+https://aur.archlinux.org/packages/arch32-light/
+http://stackoverflow.com/questions/3737008/how-to-run-a-command-in-a-chroot-jail-not-as-root-and-without-sudo
 ```
