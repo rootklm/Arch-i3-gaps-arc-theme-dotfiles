@@ -564,6 +564,29 @@ https://wiki.archlinux.org/index.php/Stalonetray
 https://github.com/trizen/menutray/blob/master/INSTALL.md
 https://aur.archlinux.org/packages/menutray/
 
+This definately works (but adds modularity which may compromise the overall integrity of the system in the long run):
+https://github.com/milkbikis/powerline-shell
+
+This probably works (same problem):
+use:
+https://github.com/VundleVim/Vundle.vim
+to get:
+https://github.com/vim-airline/vim-airline
+and 
+https://github.com/vim-airline/vim-airline-themes
+```
+
+###Things I want on the bars:
+```
+Top bar:
+     Current focus window (from xprop)
+     scrolling music title (from mpd) CLICK -> ncmpcpp
+     volume (from alsautils) CLICK -> alsamixer
+     cpu/memory usage (from conky) CLICK -> htop
+
+Bottom bar:
+     Time/Date CLICK -> google calendar
+     Workspaces CLICK -> to that workspace (like on i3bar)
 ```
 
 ##Chroot
