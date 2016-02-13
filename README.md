@@ -104,9 +104,8 @@ ctrl+c (stop ping)
 # arch-chroot /mnt
 # echo <Name your computer here> > /etc/hostname
 # ln -s /usr/share/zoneinfo/Chozen/Time_Zone > /etc/localtime (ls /usr/share/zoneinfo and ls/usr/share/zoneinfo/<your country> to figure out what is available)
-# echo en_US.UTF-8 UTF-8
+# echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen
 # locale-gen
-# localectl set-locale LANG=en_US.UTF-8
 $ LANG= source /etc/profile.d/locale.sh (optional, just applies the update right now)
 # mkinitcpio -p linux
 # passwd (follow prompts)
