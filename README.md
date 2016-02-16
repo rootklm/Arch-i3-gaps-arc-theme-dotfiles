@@ -120,6 +120,8 @@ $ LANG= source /etc/profile.d/locale.sh (optional, just applies the update right
 #Reconnect to the internet:
 ```
 # wifi-menu (follow the prompts again)
+(or, if you're in a VM:)
+#  dhcpcd
 ```
 
 #Set up user:
