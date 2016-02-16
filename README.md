@@ -148,7 +148,18 @@ $ mkdir ~/bin
 ```
 # pacman -Syy
 # pacman -Syu
+(Or, # Pacman -Syyu)
+
 # pacman-key --refresh-keys
+If you want to update a public key:
+make sure to copy your edited ~/.gnupg/gpg.conf over
+# pacman-key -r 919464515CCF8BB3
+# pacman-key -f 919464515CCF8BB3
+# pacman-key --lsign-key 919464515CCF8BB3
+$ gpg --recv-keys 919464515CCF8BB3
+$ gpg --edit-key 919464515CCF8BB3
+> trust
+> q
 ```
 
 #Install yaourt (for aur):
