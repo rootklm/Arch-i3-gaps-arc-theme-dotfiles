@@ -1,0 +1,12 @@
+pacman -S sudo git binutils gcc make fakeroot
+
+mkdir /home/rklm/Downloads && cd /home/rklm/Downloads
+
+git clone https://aur.archlinux.org/package-query.git
+cd package-query
+makepkg -si
+cd ..
+git clone https://aur.archlinux.org/yaourt.git
+cd yaourt
+makepkg -si
+cd ..
