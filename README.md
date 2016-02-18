@@ -601,6 +601,18 @@ Bottom bar:
      Workspaces CLICK -> to that workspace (like on i3bar)
 ```
 
+###Things I have figured out:
+```
+Copy over all the dotfiles, there is special sauce in them now.
+
+Install powerline using this guide:
+https://powerline.readthedocs.org/en/latest/installation.html
+
+To get them to work, make sure these are installed:
+# pacman -S vim tmux
+$ yaourt -S lemonbar-xft-git powerline-fonts-git
+```
+
 ##Chroot
 ###Install and configure arch32-light
 ###Install and configure base, base-devel, nvidia, skype, steam, and other 32bit packages in arch32
