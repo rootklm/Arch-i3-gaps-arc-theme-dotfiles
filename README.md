@@ -246,7 +246,7 @@ $ cp /media/usb/Backup/xinitrc /etc/X11/xinit/
 #Install Standard software:
 ```
 # pacman -S firefox gtk3 lxappearance gedit emacs rxvt-unicode transmission-cli arandr feh ranger htop nmon screenfetch xorg-xrdb scrot imagemagick dbus xorg-xbacklight
-$ yaourt -S ttf-google-fonts-git ttf-font-awesome gtk-theme-arc-git rofi-git i3blocks compton apulse 
+$ yaourt -S ttf-google-fonts-git ttf-font-awesome gtk-theme-arc-git rofi-git i3blocks compton apulse fish-git
 ```
 
 #Move your dotfiles over:
@@ -266,6 +266,13 @@ $ yaourt -S ttf-google-fonts-git ttf-font-awesome gtk-theme-arc-git rofi-git i3b
 ~/Pictures/wallpaper.png
 *.sh from ~/.config/i3/startScripts
 *.json from ~/.config/i3/ (maybe make a new directory at ~/.config/i3/workspaceLayouts and change the references in ~/.config/i3/config)
+
+(NEW STUFF:)
+powerline configs
+fish configs
+tmux configs
+vim configs
+updated dots from all over current machine
 ```
 
 #Configure software:
