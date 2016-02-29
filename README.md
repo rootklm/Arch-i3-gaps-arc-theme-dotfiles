@@ -120,8 +120,34 @@ $ LANG= source /etc/profile.d/locale.sh (optional, just applies the update right
 #Reconnect to the internet:
 ```
 # wifi-menu (follow the prompts again)
+# netctl list (Choose a network)
+# netctl enable <Chosen network>
+# netctl start <Chosen network>
 (or, if you're in a VM:)
 #  dhcpcd
+```
+
+#Update package manager:
+```
+# pacman -Syy
+# pacman -Syu
+(Or, # Pacman -Syyu)
+
+# pacman-key --refresh-keys
+If you want to update a public key:
+make sure to copy your edited ~/.gnupg/gpg.conf over
+# pacman-key -r <public key>
+# pacman-key -f <public key>
+# pacman-key --lsign-key <public key>
+$ gpg --recv-keys <public key>
+$ gpg --edit-key <public key>
+> trust
+> q
+```
+
+#Install vim (to make the steps that require config file edits easier):
+```
+# pacman -S vim git
 ```
 
 #Set up user:
@@ -132,6 +158,102 @@ $ LANG= source /etc/profile.d/locale.sh (optional, just applies the update right
 add the following line under "root ALL=(ALL) ALL":
      "rklm ALL=(ALL) ALL"
 save the file with :w! or :x!
+# su rklm
+# vim /etc/systemd/system/getty@tty1.service.d/override.conf
+add the following to override.conf:
+[Service]
+ExecStart=
+ExecStart=-/usr/bin/agetty --autologin username --noclear %I $TERM
+```
+
+#Set up startup script:
+
+##Create rc.local
+```
+# vim /usr/local/sbin/rc.local
+```
+
+##add the following to rc.local:
+```
+#!/bin/bash
+#
+# /usr/local/sbin/rc.local: Local multi-user startup script.
+dmesg -n 3
+```
+
+##make rc.local executable
+```
+# chmod +x /usr/local/sbin/rc.local
+```
+
+##Create service file for rc.local
+```
+# vim /etc/systemd/system/rc-local.service
+```
+
+##add the following to rc-local.service
+```
+[Unit]
+Description=/etc/rc.local Compatibility
+ConditionFileIsExecutable=/usr/local/sbin/rc.local
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/rc.local
+TimeoutSec=0
+StandardOutput=tty
+RemainAfterExit=yes
+SysVStartPriority=99
+
+[Install]
+WantedBy=multi-user.target
+```
+
+##enable the service file
+```
+# systemctl enable rc-local
+```
+
+##create editor executable
+```
+vim ~/bin/editStartScript.sh
+```
+
+##add the following to editStartScript.sh
+```
+urxvt -e sudo vim /usr/local/sbin/rc.local
+```
+
+##make editStartScript.sh executable
+```
+chmod +x ~/bin/editStartScript.sh
+```
+
+#Set up audio:
+
+##Add user to audio group:
+```
+# usermod -aG audio rklm
+```
+
+##install utilities:
+```
+# pacman -S alsa-utils alsa-plugins
+# pacman -S alsa-oss
+# modprobe snd-seq-oss
+# modprobe snd-pcm-oss
+# modprobe snd-mixer-oss
+```
+
+##Unmuting alsa:
+```
+$ amixer sset Master unmute
+$ alsamixer
+```
+
+##Test:
+```
+$ speaker-test -c 2
 ```
 
 #Make some folders in your home directory:
@@ -146,24 +268,6 @@ $ mkdir ~/bin
 # chmod -R 777 /home/rklm/*
 ```
 
-#Update package manager:
-```
-# pacman -Syy
-# pacman -Syu
-(Or, # Pacman -Syyu)
-
-# pacman-key --refresh-keys
-If you want to update a public key:
-make sure to copy your edited ~/.gnupg/gpg.conf over
-# pacman-key -r 919464515CCF8BB3
-# pacman-key -f 919464515CCF8BB3
-# pacman-key --lsign-key 919464515CCF8BB3
-$ gpg --recv-keys 919464515CCF8BB3
-$ gpg --edit-key 919464515CCF8BB3
-> trust
-> q
-```
-
 #Install yaourt (for aur):
 ```
 $ cd /home/rklm/Downloads
@@ -174,11 +278,6 @@ $ cd ..
 $ git clone https://aur.archlinux.org/yaourt.git
 $ cd yaourt
 $ makepkg -si
-```
-
-#Install vim (to make the steps that require config file edits easier):
-```
-# pacman -S vim git
 ```
 
 #Configure video drivers/server:
@@ -526,33 +625,6 @@ idk yet
 ```
 # pacman -S xf86-input-synaptics
 $ cp /usr/share/X11/xorg.conf.d/50-synaptics.conf /etc/X11/xorg.conf.d/
-```
-
-#Set up audio:
-
-##Add user to audio group:
-```
-# usermod -aG audio rklm
-```
-
-##install utilities:
-```
-# pacman -S alsa-utils alsa-plugins
-# pacman -S alsa-oss
-# modprobe snd-seq-oss
-# modprobe snd-pcm-oss
-# modprobe snd-mixer-oss
-```
-
-##Unmuting alsa:
-```
-$ amixer sset Master unmute
-$ alsamixer
-```
-
-##Test:
-```
-$ speaker-test -c 2
 ```
 
 #Things to work on:
