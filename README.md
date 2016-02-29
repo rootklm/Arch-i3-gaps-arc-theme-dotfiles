@@ -166,6 +166,18 @@ ExecStart=
 ExecStart=-/usr/bin/agetty --autologin username --noclear %I $TERM
 ```
 
+#Make some folders in your home directory:
+```
+$ mkdir ~/Desktop
+$ mkdir ~/Documents
+$ mkdir ~/Downloads
+$ mkdir ~/Music
+$ mkdir ~/Pictures
+$ mkdir ~/Software
+$ mkdir ~/bin
+# chmod -R 777 /home/rklm/*
+```
+
 #Set up startup script:
 
 ##Create rc.local
@@ -254,18 +266,6 @@ $ alsamixer
 ##Test:
 ```
 $ speaker-test -c 2
-```
-
-#Make some folders in your home directory:
-```
-$ mkdir ~/Desktop
-$ mkdir ~/Documents
-$ mkdir ~/Downloads
-$ mkdir ~/Music
-$ mkdir ~/Pictures
-$ mkdir ~/Software
-$ mkdir ~/bin
-# chmod -R 777 /home/rklm/*
 ```
 
 #Install yaourt (for aur):
