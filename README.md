@@ -385,6 +385,7 @@ Go to this address in firefox and install the arc firefox theme: https://github.
 Make a macro that runs transmission cli in the terminal using this syntax: "transmission-cli -D -ep -w '/home/rklm/Downloads/' <magnet link>"
 move wallpaper.jpg to ~/Pictures
 xrdb ~/.Xresources
+tmux source-file ~/.tmux.conf
 $ cp /usr/share/apulse/asoundrc.sample ~/.asoundrc
 $ cp /media/usb/Backup/lock.sh ~/bin
 $ cp /media/usb/Backup/lock.png ~/.config/i3/
