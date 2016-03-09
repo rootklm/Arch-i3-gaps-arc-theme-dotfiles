@@ -697,6 +697,14 @@ To get them to work, make sure these are installed:
 $ yaourt -S lemonbar-xft-git powerline-fonts-git
 ```
 
+###Things I want:
+```
+segments that don't exist yet:
+     ones from above###
+set up lemonbar on-click events
+set up keybinds for starting environments (firefox, ncmpcpp, system monitor, etc)
+```
+
 ##Chroot
 ###Install and configure arch32-light
 ###Install and configure base, base-devel, nvidia, skype, steam, and other 32bit packages in arch32
